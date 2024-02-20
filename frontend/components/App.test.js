@@ -5,7 +5,7 @@ import server from './backend/mock-server'
 import '@testing-library/jest-dom'
 
 let up, down, left, right, reset, submit
-let squares, coordinates, steps, message, email
+let squares, coordinates, steps, message, email 
 
 test('sanity', () => {
   screen.debug()
