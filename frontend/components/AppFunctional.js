@@ -47,10 +47,10 @@ export default function AppFunctional(props) {
     const direction = evt.target.id;
     const nextIdx = getNextIndex(direction);
 
-    if (nextIdx === index) {
-      setMessage(`You can't go ${direction}`);
-    } else if (nextIdx === initialIndex) {
+    if (direction === 'reset') {
       reset();
+    } else if (nextIdx === index) {
+      setMessage(`You can't go ${direction}`);
     } else {
       setIndex(nextIdx);
       setSteps(prevSteps => prevSteps + 1);
@@ -61,8 +61,8 @@ export default function AppFunctional(props) {
   }
 
   function onChange(evt) {
-    const { value } = evt.target
-    setEmail(value)
+    const { value } = evt.target;
+    setEmail(value);
   }
 
   function onSubmit(evt) {
@@ -76,11 +76,11 @@ export default function AppFunctional(props) {
     };
     axios.post("http://localhost:9000/api/result", payload)
       .then(res => {
-        setMessage(res.data.message)
-        setEmail(initialEmail)
+        setMessage(res.data.message);
+        setEmail(initialEmail);
       })
       .catch(err => {
-        setMessage(err.response.statusText)
+        setMessage(err.response.data.message);
       });
   }
 
@@ -88,7 +88,7 @@ export default function AppFunctional(props) {
     <div id="wrapper" className={props.className}>
       <div className="info">
         <h3 id="coordinates">{getXYMessage()}</h3>
-        <h3 id="steps">{`You moved ${steps} times`}</h3>
+        <h3 id="steps">{`You moved ${steps} time${steps === 1 ? '' : 's'}`}</h3>
       </div>
       <div id="grid">
         {
