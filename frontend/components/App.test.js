@@ -27,7 +27,7 @@ const updateStatefulSelectors = document => {
   email = document.querySelector('#email')
 }
 
-[AppFunctional, /* AppClass */].forEach((Component, idx) => {
+[AppFunctional].forEach((Component, idx) => {
   const label = idx === 0 ? 'FUNCTIONAL' : 'CLASS-BASED'
   
   describe(`${label}`, () => {

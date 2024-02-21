@@ -54,9 +54,7 @@ export default function AppFunctional(props) {
     } else {
       setIndex(nextIdx);
       setSteps(prevSteps => prevSteps + 1);
-      if (message !== initialMessage) {
-        setMessage(initialMessage);
-      }
+      setMessage(initialMessage);
     }
   }
 
